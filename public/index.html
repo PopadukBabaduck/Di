@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Авторизація на платформі</title>
+  <link rel="stylesheet" href="style.css">
+   <style>
+    /* Простейшие стили для примера */
+    body { font-family: Arial, sans-serif; padding: 1rem; }
+    .auth-button { display: block; width: 100%; padding: .75rem; background: #000; color: #fff; text-align: center; border: none; border-radius: 50px; margin-top: 1rem; text-decoration: none; }
+    .loader-screen { text-align: center; margin-top: 2rem; }
+    .loader-screen .spinner {
+      margin: 1rem auto;
+      width: 40px; height: 40px;
+      border: 4px solid #ddd; border-top-color: #0066cc;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg) }
+      to   { transform: rotate(360deg) }
+    }
+  </style>
+</head>
+<body>
+    <div class="header-wrapper">
+  <div class="top-bar">
+    <a href="https://diia.gov.ua" target="_blank">
+      Людям із порушенням зору
+      <span class="eye-icon"></span>
+    </a>
+  </div>
+  <header class="site-header">
+    <div class="logo">
+      <a href="https://diia.gov.ua">
+        <!-- 1) Чорний логотип зліва від тексту -->
+        <img src="dia.png" alt="Дія" class="logo-icon">
+      <div class="logo-text">
+        <span class="logo-line1">Платформа</span>
+        <span class="logo-line2">Центрів</span>
+      </div>
+      </a>
+    </div>
+<div class="header-controls">
+  <button class="icon-btn" aria-label="Пошук" onclick="location.href='https://diia.gov.ua'">
+    <svg viewBox="0 0 24 24">
+      <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C8.01 14 6 11.99 6 9.5S8.01 5 10.5 5 15 7.01 15 9.5 12.99 14 10.5 14z"/>
+    </svg>
+  </button>
+  <button class="icon-btn" aria-label="Профіль" onclick="location.href='https://diia.gov.ua'">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8V22h19.2v-2.8c0-3.2-6.4-4.8-9.6-4.8z"/>
+    </svg>
+  </button>
+  <button class="icon-btn" aria-label="Меню" onclick="location.href='https://diia.gov.ua'">
+    <svg viewBox="0 0 24 24">
+      <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+    </svg>
+  </button>
+</div>
+</div>
+  </header>
+
+  <div class="breadcrumb">
+    <span class="breadcrumb-role">Я — працівник</span>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-page">Авторизація на платформі</span>
+  </div>
+
+  <div id="step1" style="display:none;">
+    <button class="auth-button"
+      onclick="location.href='https://diia.gov.ua?redirect='+encodeURIComponent(window.location.href)">
+      Розпочати авторизацію
+    </button>
+  </div>
+
+  <!-- Шаг 2: загрузка -->
+  <div id="step2" class="loader-screen" style="display:none;">
+    <div class="spinner"></div>
+    <p>Завантаження даних користувача…</p>
+  </div>
+
+  <!-- Шаг 3: карточка с данными -->
+<div id="step3" style="display:none;">
+  <div class="auth-card">
+    <h1>Готовність до завантаження у застусунок Дія</h1>
+    <p><strong>Дата народження:</strong> <span id="ipp">—</span></p>
+    <p><strong>ПІБ:</strong> <span id="fullName">—</span></p>
+    <p><strong>ID користувача:</strong> <span id="idd">—</span></p>
+    <p><strong>Дата реєстрації:</strong> <span id="birthDate">—</span></p>
+    <p><strong>Номер документу:</strong> <span id="docNumber">—</span></p>
+    <p><strong>Статус:</strong> <span id="status">—</span></p>
+  </div>
+    <button class="auth-button"
+      onclick="window.location.reload()">
+      ОНОВИТИ
+    </button>
+
+  <hr class="section-separator">
+
+<div class="page-menu">
+<div class="pm-header">
+  <div class="mm-logo">
+  <img src="dia-black.png" alt="Логотип Дія">
+        <div class="mm-logo-text">
+        <span class="mm-logo-line1">Платформа</span>
+        <span class="mm-logo-line2">Центрів</span>
+      </div>
+</div>
+    <nav class="pm-nav">
+      <h2>Громадянам</h2>
+      <ul>
+        <li><a href="https://diia.gov.ua">Що таке Дія Центр</a></li>
+        <li><a href="https://diia.gov.ua">Приєднатись до команди</a></li>
+        <li><a href="https://diia.gov.ua">Навчання</a></li>
+      </ul>
+      <h2>Працівникам</h2>
+      <ul>
+        <li><a href="https://diia.gov.ua">Навчання</a></li>
+        <li><a href="https://diia.gov.ua">Стати Дія Центром</a></li>
+        <li><a href="https://diia.gov.ua">Бібліотека матеріалів</a></li>
+        <li><a href="https://diia.gov.ua">Запитай в експерта</a></li>
+        <li><a href="https://diia.gov.ua">Історії успіху</a></li>
+        <li><a href="https://diia.gov.ua">Підтримка Центрів</a></li>
+        <li><a href="https://diia.gov.ua">Договір про підключення…</a></li>
+      </ul>
+      <hr>
+      <ul class="pm-extra-links">
+        <li><a href="https://diia.gov.ua">Головна</a></li>
+        <li><a href="https://diia.gov.ua">Новини</a></li>
+        <li><a href="https://diia.gov.ua">Дія.Цифрова освіта</a></li>
+        <li><a href="https://diia.gov.ua">Мапа Центрів</a></li>
+        <li><a href="https://diia.gov.ua">Опитування</a></li>
+        <li><a href="https://diia.gov.ua">Центри в цифрах</a></li>
+        <li><a href="https://diia.gov.ua">Портал Дія</a></li>
+        <li><a href="https://diia.gov.ua">Гід з держпослуг</a></li>
+      </ul>
+      <div class="pm-buttons">
+        <a href="https://diia.gov.ua" class="btn btn-white">Зворотний зв'язок</a>
+        <a href="https://diia.gov.ua" class="btn btn-outline">Мій кабінет</a>
+      </div>
+      <hr>
+      <div class="pm-subscribe">
+        <h3>Будьте в курсі усіх подій та новин</h3>
+        <p>Підписатись на новини</p>
+        <form>
+          <div class="email-input">
+            <input type="email" placeholder="Ваш e-mail" required>
+            <button type="submit" class="email-send">&rarr;</button>
+          </div>
+          <label class="checkbox">
+            <input type="checkbox"> Хочу також отримувати новини від Мінцифри
+          </label>
+        </form>
+        <p class="privacy">
+          Повідомлення про обробку <a href="https://diia.gov.ua">персональних даних</a>
+        </p>
+        <div class="pm-socials">
+          <a href="https://facebook.com" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22,12A10,10…"/></svg>
+          </a>
+          <a href="https://telegram.org" aria-label="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M9.5,15.5…"/></svg>
+          </a>
+        </div>
+      </div>
+      <hr>
+      <footer class="pm-footer">
+        <p>
+          Платформа Дія Центрів розроблена
+          <a href="https://vintage.ua">Vintage Web Production</a>
+          у співпраці з
+          <a href="https://thedigital.gov.ua">Мінцифрою України</a>,
+          ДП «Дія» та проєктом
+          <a href="https://surge.gov.ua">SURGe</a>.
+        </p>
+        <p>© 2025. Усі права захищені.</p>
+      </footer>
+    </nav>
+  </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const wrapper = document.querySelector('.header-wrapper');
+  let lastWindowY = window.scrollY;
+  let lastMenuY   = 0;
+  const pageMenu  = document.querySelector('.page-menu');
+
+  function onScroll(y, lastY) {
+    if (y > lastY) {
+      wrapper.classList.add('header-wrapper--hidden');
+    } else {
+      wrapper.classList.remove('header-wrapper--hidden');
+    }
+    return y;
+  }
+
+  // Скролл окна
+  window.addEventListener('scroll', () => {
+    lastWindowY = onScroll(window.scrollY, lastWindowY);
+  });
+
+  // Скролл внутреннего меню (если у .page-menu overflow-y: auto)
+  if (pageMenu) {
+    pageMenu.addEventListener('scroll', () => {
+      lastMenuY = onScroll(pageMenu.scrollTop, lastMenuY);
+    });
+  }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const userId = params.get('userId');
+
+  const step1 = document.getElementById('step1');
+  const step2 = document.getElementById('step2');
+  const step3 = document.getElementById('step3');
+
+  // 1) Якщо userId немає — показуємо кнопку авторизації
+  if (!userId) {
+    step1.style.display = 'block';
+    return;
+  }
+
+  // 2) Якщо userId є — спочатку спіннер
+  step2.style.display = 'block';
+
+  // 3) Завантажуємо користувача
+  fetch(`http://localhost:3000/api/users/${encodeURIComponent(userId)}`)
+    .then(res => {
+      if (!res.ok) throw new Error('network');
+      return res.json();
+    })
+    .then(u => {
+      // 4) Приховуємо спіннер, показуємо картку
+      step2.style.display = 'none';
+      step3.style.display = 'block';
+
+      // 5) Форматуємо дату реєстрації (беремо поле birthDate або registrationDate)
+      const raw = u.registrationDate || u.birthDate || '';
+      let formatted = '—';
+      if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
+        const [y,m,d] = raw.split('-');
+        formatted = `${d}.${m}.${y}`;
+      }
+
+      // 6) Заповнюємо всі поля
+      document.getElementById('ipp')      .textContent = u.ipp;
+      document.getElementById('fullName') .textContent = u.fullName   || '—';
+      document.getElementById('idd')      .textContent = u.id         || '—';
+      document.getElementById('birthDate').textContent = formatted;
+      document.getElementById('docNumber').textContent = u.docNumber || '—';
+      document.getElementById('status')   .textContent = u.status    || '—';
+    })
+    .catch(() => {
+      step2.innerHTML = '<p style="color:red">Помилка отримання даних користувача.</p>';
+    });
+});
+</script>
+
+</body>
+</html>

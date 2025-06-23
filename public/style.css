@@ -1,0 +1,1022 @@
+/* —————— Mobile menu —————— */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.95);
+  overflow-y: auto;
+  z-index: 999;
+}
+.mobile-menu {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 1rem;
+  color: #fff;
+}
+.mm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.mm-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.mm-nav h2 {
+  font-size: 1rem;
+  margin: 1rem 0 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.mm-nav ul {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+.mm-nav ul li + li {
+  margin-top: 0.75rem;
+}
+.mm-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+.mm-extra-links {
+  margin-top: 0.5rem;
+}
+.mm-extra-links li + li {
+  margin-top: 0.75rem;
+}
+hr {
+  border: 0;
+  border-top: 1px solid #555;
+  margin: 1.5rem 0;
+}
+
+/* Кнопки */
+.mm-buttons .btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+.btn-white {
+  background: #fff;
+  color: #000;
+}
+.btn-outline {
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+/* Подписка */
+.mm-subscribe h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.mm-subscribe p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #ddd;
+}
+.email-input {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.email-input input {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.email-input .email-send {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.checkbox input {
+  margin-right: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Социальные иконки */
+.mm-socials {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.mm-socials a svg {
+  fill: #fff;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Футер */
+.mm-footer p {
+  font-size: 0.8rem;
+  color: #aaa;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+.mm-footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+/* ————— Reset ————— */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ————— Базовые ————— */
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  line-height: 1.4;
+}
+
+/* ————— Top-bar ————— */
+.top-bar {
+  background: #f0fcee;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #ccc;
+}
+.top-bar a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+}
+.top-bar .eye-icon {
+  display: inline-block;
+  width: 1rem; height: 1rem;
+  margin-left: 0.5rem;
+  background: url("data:image/svg+xml;charset=UTF-8,\
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+      <path fill='%23333' d='M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7z'/>\
+      <circle fill='%23333' cx='12' cy='12' r='2.5'/>\
+    </svg>") no-repeat center/contain;
+}
+
+/* ————— Auth card ————— */
+.auth-card {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-top: 6px solid #00bcd4;
+  border-left: 6px solid #8bc34a;
+  border-radius: 4px;
+}
+.auth-title {
+  font-size: 1.5rem; color: #333;
+  margin-bottom: 1.5rem;
+}
+.form-group {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.25rem;
+}
+.form-group select {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0;
+  font-size: 1rem;
+  border: none; border-bottom: 1px solid #333;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+.form-group::after {
+  content: '';
+  position: absolute; top: 50%; right: 0.5rem;
+  width: 0.65rem; height: 0.4rem;
+  background: url('data:image/svg+xml;utf8,\
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 2">\
+      <path fill="%23333" d="M0,0 L2,2 L4,0 Z"/>\
+    </svg>') no-repeat center/contain;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.auth-button {
+  display: block; width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background: #000; color: #fff;
+  border: none; border-radius: 50px;
+  cursor: pointer;
+}
+
+/* ————— Разделитель ————— */
+.section-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2rem 0 1rem;
+}
+
+/* ————— Нижний контент страницы ————— */
+.page-menu {
+  background: #fff;
+  color: #333;
+  padding: 0 1rem 2rem;
+}
+.pm-header {
+  padding: 1rem 0;
+  text-align: left;
+}
+.pm-header .pm-logo img {
+  height: 32px;
+}
+
+.pm-nav h2 {
+  font-size: 1rem;
+  margin: 1.5rem 0 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.pm-nav ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+.pm-nav li + li {
+  margin-top: 0.5rem;
+}
+.pm-nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.pm-extra-links {
+  margin-top: 1rem;
+}
+.pm-extra-links li + li {
+  margin-top: 0.5rem;
+}
+
+.pm-buttons {
+  margin: 1.5rem 0;
+}
+.pm-buttons .btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+.btn-white {
+  background: #fff;
+  color: #000;
+  border: none;
+}
+.btn-outline {
+  background: none;
+  border: 1px solid #333;
+  color: #333;
+}
+
+/* Подписка */
+.pm-subscribe h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.pm-subscribe p {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.email-input {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.email-input input {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 1px solid #333;
+}
+.email-send {
+  position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none;
+  font-size: 1.2rem; cursor: pointer;
+}
+.checkbox {
+  display: flex; align-items: center;
+  font-size: 0.9rem; margin-bottom: 1rem;
+}
+.checkbox input {
+  margin-right: 0.5rem; width: 1rem; height: 1rem;
+}
+
+/* Соцсети */
+.pm-socials {
+  display: flex; gap: 1rem; margin: 1.5rem 0;
+}
+.pm-socials svg {
+  width: 1.5rem; height: 1.5rem; fill: #333;
+}
+
+/* Футер */
+.pm-footer {
+  font-size: 0.8rem; color: #666;
+  line-height: 1.4; margin-top: 2rem;
+}
+.pm-footer a {
+  color: #0066cc; text-decoration: underline;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  line-height: 1.4;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.1rem;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+}
+.site-header .logo a {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+.header-controls {
+  display: flex;
+  align-items: center;
+}
+.header-controls button {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.header-controls button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: #333;
+}
+.header-controls button[aria-label="Пошук"] {
+  margin-left: 0;
+}
+
+/* Top bar */
+.top-bar {
+  background: #f0fcee;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #ccc;
+}
+.top-bar a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+}
+.eye-icon {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+  background: url("data:image/svg+xml;charset=UTF-8,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>\
+<path fill='%23333' d='M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/>\
+<circle fill='%23333' cx='12' cy='12' r='2.5'/>\
+</svg>") no-repeat center/contain;
+}
+
+/* Auth card */
+.auth-card {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-top: 6px solid #00bcd4;
+  border-left: 6px solid #8bc34a;
+  border-radius: 4px;
+}
+.auth-card h1 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+.form-group {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.25rem;
+}
+.form-group select {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 0;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 1px solid #333;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+.form-group::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  width: 0.65rem;
+  height: 0.4rem;
+  background: url("data:image/svg+xml;charset=US-ASCII,\
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 2'>\
+<path fill='%23333' d='M0,0 L2,2 L4,0 Z'/>\
+</svg>") no-repeat center/contain;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.auth-button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* Separator */
+.section-separator {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2rem 0 1rem;
+}
+
+/* Page menu */
+.page-menu {
+  background: #fff;
+  color: #333;
+  padding: 0 1rem 2rem;
+}
+.pm-header {
+  padding: 1rem 0;
+}
+.pm-logo img {
+  height: 32px;
+}
+.pm-nav h2 {
+  font-size: 1rem;
+  margin: 1.5rem 0 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.pm-nav ul {
+  list-style: none;
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+.pm-nav li + li {
+  margin-top: 0.5rem;
+}
+.pm-nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+.pm-extra-links {
+  margin-top: 1rem;
+}
+.pm-extra-links li + li {
+  margin-top: 0.5rem;
+}
+.pm-buttons {
+  margin: 1.5rem 0;
+}
+.pm-buttons .btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-decoration: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+.btn-white { background: #fff; color: #000; }
+.btn-outline { background: none; border: 1px solid #333; color: #333; }
+.pm-subscribe h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.pm-subscribe p { font-size: 0.9rem; margin-bottom: 1rem; }
+.email-input { position: relative; margin-bottom: 1rem; }
+.email-input input {
+  width: 100%; padding: 0.5rem 2.5rem 0.5rem 0; font-size: 1rem;
+  border: none; border-bottom: 1px solid #333;
+}
+.email-send {
+  position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%); background: none; border: none;
+  font-size: 1.2rem; cursor: pointer;
+}
+.checkbox {
+  display: flex; align-items: center; font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.checkbox input { margin-right: 0.5rem; width: 1rem; height: 1rem; }
+.pm-socials {
+  display: flex; gap: 1rem; margin: 1.5rem 0;
+}
+.pm-socials svg { width: 1.5rem; height: 1.5rem; fill: #333; }
+.pm-footer {
+  font-size: 0.8rem; color: #666; line-height: 1.4; margin-top: 2rem;
+}
+.pm-footer a { color: #0066cc; text-decoration: underline; }
+/* Размер иконки «Дія» в header */
+
+
+/* Размер иконки «Дія» внизу (в .pm-logo) */
+.pm-logo-icon {
+  width: 40px;      /* можно сделать чуть побольше */
+  height: auto;
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+/* Выровнять иконку и текст в header */
+.site-header .logo a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0rem;    /* промежуток между иконкой и текстом */
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.logo-line1 {
+  font-size: 1rem;       /* размер «Платформа» */
+  font-weight: bold;
+  color: #333;
+}
+.logo-line2 {
+  font-size: 0.85rem;    /* чуть меньше для «Центрів» */
+  color: #333;
+}
+/* Подвинем иконку чуть левее, если нужно */
+.logo-icon {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  
+}
+/* ——— Breadcrumb над формой ——— */
+.breadcrumb {
+  max-width: 400px;       /* совпадает с шириной .auth-card */
+  margin: 1.5rem auto 0;  /* отступ сверху, выравнивание по центру */
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+.breadcrumb-role {
+  font-weight: bold;      /* «Я — працівник» чуть жирнее */
+}
+.breadcrumb-sep {
+  margin: 0 0.5rem;
+  color: #666;            /* разделитель чуть светлее */
+}
+.breadcrumb-page {
+  color: #777;            /* «Авторизація…» — средний по яркости */
+}
+.auth-card {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 1.5rem;
+  /* общий тонкий контур */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+
+  /* цветной ободок вокруг, толщиной 4px:
+     Сверху, справа и снизу — бирюзовый,
+     Слева — зелёный */
+  border-top:    2px solid #00bcd4;
+  border-right:  2px solid #00bcd4;
+  border-bottom: 2px solid #00bcd4;
+  border-left:   2px solid #8bc34a;
+}
+/* Чёрный фон и белый текст для нижнего меню */
+.page-menu {
+  background: #000;
+  color: #fff;
+}
+
+/* Поменять цвет разделителей внутри .page-menu */
+.page-menu hr {
+  border-top: 1px solid #444;
+}
+
+/* Заголовки разделов */
+.page-menu h2 {
+  color: #fff;
+}
+
+/* Ссылки – светло-серые, при наведении — белые */
+.page-menu a {
+  color: #ccc;
+  text-decoration: none;
+}
+.page-menu a:hover {
+  color: #fff;
+}
+
+/* Поля ввода e-mail */
+.page-menu .email-input input {
+  border-bottom: 1px solid #fff;
+  color: #fff;
+}
+.page-menu .email-input input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+/* Кнопка отправки e-mail */
+.page-menu .email-send {
+  color: #fff;
+}
+
+/* Чекбокс и текст рядом */
+.page-menu .checkbox {
+  color: #fff;
+}
+.page-menu .checkbox input {
+  border: 1px solid #fff;
+}
+
+/* Социальные иконки */
+.page-menu .pm-socials svg {
+  fill: #fff;
+}
+
+/* Футер */
+.page-menu .pm-footer {
+  color: rgba(255,255,255,0.6);
+}
+.page-menu .pm-footer a {
+  color: #ccc;
+}
+.page-menu {
+  background: #000;
+  color: #fff;
+}
+/* === Круглые кнопки поиска, профиля и меню === */
+.header-controls {
+  display: flex;
+  gap: 8px;             /* равные отступы между кнопками */
+}
+
+.header-controls .icon-btn {
+  width: 36px;          /* диаметр кружка */
+  height: 36px;
+  padding: 0;           /* сбрасываем внутренние отступы */
+  border: 1px solid #ccc; /* тонкая серая граница */
+  border-radius: 50%;   /* делаем из квадрата круг */
+  background: transparent;
+  display: flex;        /* чтобы центрировать SVG */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.header-controls .icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.header-controls .icon-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #333;
+}
+/* логотип в мобильном меню */
+.mm-logo {
+  text-align: center;       /* по центру */
+  margin-bottom: 0.75rem;   /* чуть отступ до заголовка */
+}
+.mm-logo img {
+  width: 60px;              /* подберите нужный размер */
+  height: auto;
+  display: inline-block;
+}
+.pm-header .mm-logo {
+  text-align: left !important;
+  margin-left: 1px;
+}
+/* Убираем рамку/паддинги у общего контейнера, если они были */
+.mm-logo {
+  padding: 0;
+  border: none;
+  margin-bottom: 0.75rem;
+}
+
+/* Обёртка для иконки */
+.logo-icon {
+  display: inline-block;      /* по размеру содержимого */
+  box-sizing: border-box;     /* чтобы padding не «ломал» размеры */
+  border: 1px solid #fff;     /* сама рамка */
+  border-radius: 0.5rem;      /* скруглённые углы */
+  padding: 0.4rem;            /* отступы внутри рамки */
+  margin-right: 0.75rem;      /* расстояние до текста */
+}
+
+/* Само изображение внутри обёртки */
+.logo-icon img {
+  display: block;             /* убираем лишние inline-отступы */
+  width: 2rem;                /* подберите нужный размер */
+  height: auto;
+}
+.mm-logo img {
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  width: 3rem;
+  height: auto;
+  margin-right: 0.75rem;
+}
+.mm-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: left !important;
+}
+/* сам контейнер: иконка + текст в одну строку */
+.mm-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;        /* уменьшили отступ между иконкой и текстом */
+  text-align: left;    
+}
+
+/* обёртка текста: две строки одна под другой */
+.mm-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;    /* чуть плотнее, чем по умолчанию */
+}
+
+/* первая строка («Платформа») */
+.mm-logo-line1 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;           /* сбрасываем любые отступы */
+}
+
+/* вторая строка («Центрів») под первой */
+.mm-logo-line2 {
+  font-size: 0.85rem;
+  margin: 0;           /* чтобы строка прилегала впритык */
+}
+/* Укороченный отступ между иконкой и текстом */
+.mm-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0rem;     /* было 0.25rem, стало 0.1rem */
+}
+
+/* Если вместо gap вы используете margin на иконке */
+.mm-logo-icon {
+  margin-right: 0em;  /* вместо прежних 0.75rem или 0.25rem */
+}
+/* вместо font-weight: bold; */
+.mm-logo-line1 {
+  font-size: 1rem;
+  font-weight: 500;    /* полужирный → чуть тоньше */
+  margin: 0;
+}
+
+.mm-logo-line2 {
+  font-size: 0.85rem;
+  font-weight: 400;    /* обычный вес */
+  margin: 0;
+}
+/* 1. Обёртка для топ-бара + шапки */
+.header-wrapper {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+/* 2. Когда прокручиваем вниз — уезжает вверх */
+.header-wrapper--hidden {
+  transform: translateY(-100%);
+}
+
+/* 3. Уменьшим высоту топ-бара */
+.top-bar {
+  background: #f0fcee;
+  padding: 0.25rem 1rem;
+  font-size: 0.8rem;
+}
+
+/* 4. Уменьшим высоту самой шапки */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: #fff;
+}
+
+/* 5. Жирная линия-разделитель сразу под шапкой */
+.header-separator {
+  border: none;
+  border-top: 2px solid #ccc;
+  margin: 0;
+}
+
+/* 6. Отступ всего контента под фиксированной шапкой */
+body {
+  padding-top: calc(
+    /* top-bar */   0.25rem + 
+    /* site-header */ 0.5rem +
+    /* separator */ 2px
+  );
+}
+/* Топ-бар */
+.top-bar {
+  padding: 0.2rem 1rem;    /* было 0.25rem */
+  font-size: 0.75rem;      /* было 0.8rem */
+}
+
+/* Главная шапка */
+.site-header {
+  padding: 0.4rem 1rem;    /* было 0.5rem */
+}
+
+/* Логотип-иконка */
+
+
+/* Кнопки-иконки */
+.header-controls .icon-btn {
+  width: 32px;             /* чуть меньше */
+  height: 32px;
+}
+.header-controls .icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+/* 1) Ещё компактнее верхний бар */
+.top-bar {
+  padding: 0rem 1rem;    /* было 0.25rem */
+  font-size: 0.75rem;       /* чуть поменьше текст */
+}
+
+/* 2) Ещё компактнее сама шапка */
+.site-header {
+  padding: 0.3rem 1rem;     /* было 0.5rem */
+}
+
+/* 3) Немного уменьшить сам логотип-иконку */
+.logo-icon {
+  width: 2.2rem;            /* было 2.5–3rem */
+  height: auto;
+}
+
+/* 4) Сделать нижнюю линию чуть темнее и тоньше */
+.header-separator {
+  border-top: 1px solid #000000;  /* было 2px #ccc */
+  margin: 0;                    /* без отступов */
+}
+/* 1) Убираем любой промежуток между иконкой и текстом */
+.site-header .logo a {
+  display: inline-flex;      /* оставляем flex-выравнивание */
+  align-items: center;
+  gap: 0 !important;         /* обнуляем flex-gap */
+}
+
+/* 2) Убираем маргин у иконки (можно даже сделать отрицательный) */
+.site-header .logo a .logo-icon {
+  margin-right: 0 !important;
+}
+
+/* 3) Для особо “плотного” прилегания текст можно чуть сдвинуть влево */
+.site-header .logo a .logo-text {
+  margin-left: -0.1rem;      /* двигать влево пока не получите нужный результат */
+}
+/* ————— Desktop header: уменьшаем лого-текст ————— */
+.site-header .logo-line1 {
+  font-size: 0.6rem;   /* вместо 1rem */
+}
+
+.site-header .logo-line2 {
+  font-size: 0.6rem;  /* вместо 0.85rem */
+}
+/* 1) Меньше шрифт в лого */
+.site-header .logo-line1 {
+  font-size: 0.85rem !important;  /* вместо 0.9rem */
+}
+.site-header .logo-line2 {
+  font-size: 0.7rem !important;   /* вместо 0.75rem */
+}
+
+/* 2) Уменьшаем кружки-кнопки справа */
+.header-controls .icon-btn {
+  width: 28px !important;
+  height: 28px !important;
+  margin-left: 0.5rem;     /* чуть меньше отступа между кнопками */
+}
+.header-controls .icon-btn svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+/* 1. Контейнер кнопок мобільного меню */
+.mobile-menu .mm-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;       /* відстань між кнопками */
+  margin: 1rem 0;     /* відступ зверху/знизу */
+}
+
+/* 2. Базовий стиль для всіх кнопок */
+.mobile-menu .mm-buttons .btn {
+  display: block;
+  width: 100%;             /* тягнеться на всю ширину контейнера */
+  max-width: 280px;        /* але не більше 280px */
+  padding: 0.75rem 1rem;   /* висота кнопки */
+  font-size: 1rem;         /* розмір тексту */
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50px;     /* закруглений край */
+  cursor: pointer;
+}
+
+/* 3. «Зворотний зв’язок» — біла заливка */
+.mobile-menu .mm-buttons .btn.btn-white {
+  background: #fff;
+  color: #000;
+  border: none;
+}
+
+/* 4. «Мій кабінет» — лише обведення */
+.mobile-menu .mm-buttons .btn.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+}

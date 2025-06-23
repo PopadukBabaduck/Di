@@ -1,0 +1,25 @@
+{
+  "name": "dia",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "homepage": "https://popadukbabaduck.github.io/Di",
+  "scripts": {
+    "start":   "node server.js",
+    "deploy":  "gh-pages -d public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser":        "^2.2.0",
+    "cors":               "^2.8.5",
+    "express":            "^5.1.0",
+    "express-basic-auth": "^1.2.1",
+    "uuid":               "^11.1.0"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
