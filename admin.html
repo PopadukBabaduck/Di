@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin — Користувачі</title>
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    /* Модальное окно авторизации */
+    #login-overlay {
+      position: fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+    #login-box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      max-width: 320px;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    #login-box h2 {
+      margin-bottom: 1rem;
+    }
+    #login-box input {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #login-box button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.5rem;
+      background: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #login-error {
+      color: red;
+      font-size: 0.9rem;
+      height: 1.2rem;
+    }
+    body.locked {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="locked">
+
+  <!-- Модальное окно -->
+  <div id="login-overlay">
+    <div id="login-box">
+      <h2>Дать доступ к IP адресу</h2>
+      <div id="login-error"></div>
+      <input type="text" id="login-user" placeholder="Логін" autofocus>
+      <input type="password" id="login-pass" placeholder="Пароль">
+      <button id="login-btn">Загрузить данные </button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1 class="title">EBA$H KE$H</h1>
+
+    <!-- Форма створення -->
+    <section class="card">
+      <h2 class="card__title">Добавь мамонта чтоб не потерять </h2>
+      <form id="form-new" class="form-grid">
+        <label>Дата народження: <input name="ipp" required></label>
+        <label>ПІБ: <input name="fullName"></label>
+        <label>Дата народження: <input type="date" name="birthDate"></label>
+        <label>Дата реєстрації: <input type="date" name="registrationDate"></label>
+        <label>Номер док.: <input name="docNumber"></label>
+        <label>Статус:
+          <select name="status">
+            <option>—</option>
+            <option>Oчікує підтвердження</option>
+            <option>підтверджено</option>
+            <option>відхилено</option>
+          </select>
+        </label>
+        <button class="btn primary" type="submit">СОЗДАТЬ РОГАТОГО </button>
+      </form>
+    </section>
+
+    <!-- Список користувачів -->
+    <section class="card">
+      <h2 class="card__title">СПИСОК МОХНАТЫХ</h2>
+      <div class="table-wrap">
+        <table id="tbl-users">
+          <thead>
+            <tr>
+              <th>#</th><th>ID</th><th>Дата народження</th><th>ПІБ</th>
+              <th>Дата нар.</th><th>Реєстр.</th><th>Документ</th>
+              <th>Статус</th><th>Дії</th><th>Перегляд</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Форма редагування -->
+    <section class="card hidden" id="edit-card">
+      <h2 class="card__title">Редагувати користувача</h2>
+      <form id="form-edit" class="form-grid">
+        <input type="hidden" name="id">
+        <label>Дата народження : <input name="ipp" required></label>
+        <label>ПІБ: <input name="fullName"></label>
+        <label>Дата народження: <input type="date" name="birthDate"></label>
+        <label>Дата реєстрації: <input type="date" name="registrationDate"></label>
+        <label>Номер док.: <input name="docNumber"></label>
+        <label>Статус:
+          <select name="status">
+            <option>—</option>
+            <option>Oчікує підтвердження</option>
+            <option>підтверджено</option>
+            <option>відхилено</option>
+          </select>
+        </label>
+        <div class="form-actions">
+          <button class="btn primary" type="submit">Зберегти</button>
+          <button class="btn error" type="button" id="btn-cancel">Скасувати</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <script>
+    // ————————————————————————————————
+    // Логика «модалки» авторизации
+    // ————————————————————————————————
+    const overlay = document.getElementById('login-overlay');
+    const userInp = document.getElementById('login-user');
+    const passInp = document.getElementById('login-pass');
+    const errDiv  = document.getElementById('login-error');
+    const btn     = document.getElementById('login-btn');
+
+    btn.onclick = () => {
+      const u = userInp.value.trim();
+      const p = passInp.value;
+      if (u === 'admin' && p === '20482048') {
+        overlay.style.display = 'none';
+        document.body.classList.remove('locked');
+      } else {
+        errDiv.textContent = 'Невірний логін або пароль';
+      }
+    };
+
+    passInp.addEventListener('keypress', e => {
+      if (e.key === 'Enter') btn.click();
+    });
+    // ————————————————————————————————
+
+    // Ваш существующий код админки:
+    const API       = '/api/users';
+    const tblBody   = document.querySelector('#tbl-users tbody');
+    const formNew   = document.getElementById('form-new');
+    const formEdit  = document.getElementById('form-edit');
+    const editCard  = document.getElementById('edit-card');
+    const cancelBtn = document.getElementById('btn-cancel');
+
+    async function loadUsers() {
+      const users = await fetch(API).then(r=>r.json());
+      tblBody.innerHTML = users.map((u,i)=>`
+        <tr>
+          <td>${i+1}</td>
+          <td>${u.id}</td>
+          <td>${u.ipp}</td>
+          <td>${u.fullName||''}</td>
+          <td>${u.birthDate||''}</td>
+          <td>${u.registrationDate||''}</td>
+          <td>${u.docNumber||''}</td>
+          <td>${u.status||'—'}</td>
+          <td>
+            <button class="btn small" onclick="startEdit('${u.id}')">✎</button>
+            <button class="btn small error" onclick="deleteUser('${u.id}')">🗑</button>
+          </td>
+          <td><a class="btn small" href="index.html?userId=${u.id}" target="_blank">🔗</a></td>
+        </tr>`).join('');
+    }
+
+    formNew.onsubmit = async e => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(formNew));
+      await fetch(API, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(data)
+      });
+      formNew.reset();
+      loadUsers();
+    };
+
+    window.startEdit = async id => {
+      const u = await fetch(`${API}/${id}`).then(r=>r.json());
+      formEdit.id.value               = u.id;
+      formEdit.ipp.value              = u.ipp;
+      formEdit.fullName.value         = u.fullName;
+      formEdit.birthDate.value        = u.birthDate;
+      formEdit.registrationDate.value = u.registrationDate;
+      formEdit.docNumber.value        = u.docNumber;
+      formEdit.status.value           = u.status;
+      editCard.classList.remove('hidden');
+      window.scrollTo(0, editCard.offsetTop - 20);
+    };
+
+    formEdit.onsubmit = async e => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(formEdit));
+      const id   = data.id; delete data.id;
+      await fetch(`${API}/${id}`, {
+        method:'PUT',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(data)
+      });
+      cancelEdit();
+      loadUsers();
+    };
+
+    cancelBtn.onclick = cancelEdit;
+    function cancelEdit(){
+      formEdit.reset();
+      editCard.classList.add('hidden');
+    }
+
+    async function deleteUser(id){
+      if(!confirm('Видалити користувача?')) return;
+      await fetch(`${API}/${id}`,{method:'DELETE'});
+      loadUsers();
+    }
+
+    loadUsers();
+  </script>
+</body>
+</html>
