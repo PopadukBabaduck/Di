@@ -6,7 +6,7 @@
   <title>Авторизація на платформі</title>
   <link rel="stylesheet" href="style.css">
    <style>
-    /* Простейшие стили для примера */
+
     body { font-family: Arial, sans-serif; padding: 1rem; }
     .auth-button { display: block; width: 100%; padding: .75rem; background: #000; color: #fff; text-align: center; border: none; border-radius: 50px; margin-top: 1rem; text-decoration: none; }
     .loader-screen { text-align: center; margin-top: 2rem; }
@@ -34,7 +34,7 @@
   <header class="site-header">
     <div class="logo">
       <a href="https://diia.gov.ua">
-        <!-- 1) Чорний логотип зліва від тексту -->
+
         <img src="dia.png" alt="Дія" class="logo-icon">
       <div class="logo-text">
         <span class="logo-line1">Платформа</span>
@@ -75,13 +75,13 @@
     </button>
   </div>
 
-  <!-- Шаг 2: загрузка -->
+
   <div id="step2" class="loader-screen" style="display:none;">
     <div class="spinner"></div>
     <p>Завантаження даних користувача…</p>
   </div>
 
-  <!-- Шаг 3: карточка с данными -->
+
 <div id="step3" style="display:none;">
   <div class="auth-card">
     <h1>Готовність до завантаження у застусунок Дія</h1>
@@ -195,12 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return y;
   }
 
-  // Скролл окна
+
   window.addEventListener('scroll', () => {
     lastWindowY = onScroll(window.scrollY, lastWindowY);
   });
 
-  // Скролл внутреннего меню (если у .page-menu overflow-y: auto)
+
   if (pageMenu) {
     pageMenu.addEventListener('scroll', () => {
       lastMenuY = onScroll(pageMenu.scrollTop, lastMenuY);
@@ -217,27 +217,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const step2 = document.getElementById('step2');
   const step3 = document.getElementById('step3');
 
-  // 1) Якщо userId немає — показуємо кнопку авторизації
+
   if (!userId) {
     step1.style.display = 'block';
     return;
   }
 
-  // 2) Якщо userId є — спочатку спіннер
+
   step2.style.display = 'block';
 
-  // 3) Завантажуємо користувача
-  fetch(`http://localhost:3000/api/users/${encodeURIComponent(userId)}`)
+fetch(`/api/users/${encodeURIComponent(userId)}`)
     .then(res => {
       if (!res.ok) throw new Error('network');
       return res.json();
     })
     .then(u => {
-      // 4) Приховуємо спіннер, показуємо картку
+
       step2.style.display = 'none';
       step3.style.display = 'block';
 
-      // 5) Форматуємо дату реєстрації (беремо поле birthDate або registrationDate)
+    
       const raw = u.registrationDate || u.birthDate || '';
       let formatted = '—';
       if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) {
@@ -245,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formatted = `${d}.${m}.${y}`;
       }
 
-      // 6) Заповнюємо всі поля
+
       document.getElementById('ipp')      .textContent = u.ipp;
       document.getElementById('fullName') .textContent = u.fullName   || '—';
       document.getElementById('idd')      .textContent = u.id         || '—';
